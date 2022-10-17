@@ -1,6 +1,6 @@
 Flask==2.1.0
 gevent==22.8.0
-keras==2.10.0
 numpy==1.21.5
 Pillow==9.2.0
+tensorflow==2.10.0
 Werkzeug==2.0.3
