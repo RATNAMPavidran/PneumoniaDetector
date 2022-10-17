@@ -36,7 +36,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: python-app
-          app-name: 'app.py'
           path: |
             . 
             !venv/
