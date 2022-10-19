@@ -26,13 +26,14 @@ app = Flask(__name__)
 
 
 
-def model_predict(img_path, model):
-    img = image_utils.load_img(img_path, target_size=(224, 224))
-
+def model_predict(image, model):
+    #img = image_utils.load_img(image, target_size=(224, 224))
+    img = Image.open(image).resize((224,224)).convert('RGB')
    
     x = image_utils.img_to_array(img)
     x = np.expand_dims(x, axis=0)
-
+    #print(x)
+    print(x.shape)
     x = preprocess_input(x, mode='caffe')
 
     preds = model.predict(x)
@@ -55,27 +56,10 @@ def upload():
     print("test")
     if request.method == 'POST':
         print("test")
-        
-        
-        
+      
         f = request.files['file']
-
-       
-        basepath = os.path.dirname(__file__)
-        file_path = os.path.join(
-        basepath, 'uploads', secure_filename(f.filename))
-        file_path = os.path.abspath(file_path)
-        
-        f.save(file_path)
-        
-        print(file_path)
-       
-        print(cache)
-        
-        preds = model_predict(file_path,model)
-        
-        os.remove(file_path)
-        
+      
+        preds = model_predict(f,model)
         cache['confidence_0'] = preds[0][0]
         cache['confidence_1'] = preds[0][1]
         
