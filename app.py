@@ -54,6 +54,7 @@ def upload():
         basepath = os.path.dirname(__file__)
         file_path = os.path.join(
             basepath, 'uploads', secure_filename(f.filename))
+        file_path = os.path.abspath(file_path)
         f.save(file_path)
         print(cache)
         
