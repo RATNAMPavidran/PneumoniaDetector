@@ -45,8 +45,9 @@ cache={}
 
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
+    print("test")
     if request.method == 'POST':
-        
+        print("test")
         f = request.files['file']
 
        
