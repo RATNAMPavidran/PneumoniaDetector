@@ -67,6 +67,7 @@ def upload():
         file_path = os.path.abspath(file_path)
         
         f.save(file_path)
+        
         print(file_path)
        
         print(cache)
