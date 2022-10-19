@@ -1,11 +1,16 @@
 from __future__ import division, print_function
+from fileinput import filename
 import sys
 import os
 import glob
 import re
 import numpy as np
 import PIL
+from PIL import Image
+import numpy as np
 import tensorflow 
+import base64
+
 
 from keras.applications.imagenet_utils import preprocess_input, decode_predictions
 from keras.models import load_model
@@ -41,6 +46,8 @@ def index():
 
 model= load_model("model/model.h5")
 
+
+
 cache={}
 
 @app.route('/predict', methods=['GET', 'POST'])
@@ -48,14 +55,20 @@ def upload():
     print("test")
     if request.method == 'POST':
         print("test")
+        
+        
+        
         f = request.files['file']
 
        
         basepath = os.path.dirname(__file__)
         file_path = os.path.join(
-            basepath, 'uploads', secure_filename(f.filename))
+        basepath, 'uploads', secure_filename(f.filename))
         file_path = os.path.abspath(file_path)
+        
         f.save(file_path)
+        print(file_path)
+       
         print(cache)
         
         preds = model_predict(file_path,model)
