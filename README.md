@@ -41,7 +41,8 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+## Online 
 
-
+https://pneumonidetect.azurewebsites.net
 
 
