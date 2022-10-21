@@ -27,12 +27,12 @@ app = Flask(__name__)
 
 
 def model_predict(image, model):
-    #img = image_utils.load_img(image, target_size=(224, 224))
+    
     img = Image.open(image).resize((224,224)).convert('RGB')
    
     x = image_utils.img_to_array(img)
     x = np.expand_dims(x, axis=0)
-    #print(x)
+    
     print(x.shape)
     x = preprocess_input(x, mode='caffe')
 

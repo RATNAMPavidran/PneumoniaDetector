@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    // Init
+    
     $('.image-section').hide();
     $('.loader').hide();
     $('#result').hide();
     $('#confidence_0').hide();
     $('#confidence_1').hide();
 
-    // Upload Preview
+    
    
     function readURL(input) {
         if (input.files && input.files[0]) {
